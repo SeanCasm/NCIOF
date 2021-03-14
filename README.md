@@ -10,4 +10,5 @@ Upgrading your farm by coins dropped by goblins and buying improvements for the 
 
 
 
-# No goblins injured in this game, don't call goblins rights please.
+# IMPORTANT 
+No goblins injured in this game, don't call goblins rights please.

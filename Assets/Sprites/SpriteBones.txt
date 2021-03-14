@@ -1,0 +1,9 @@
+*Sprite bones names*
+Head
+Torso
+Arm front top
+Arm front bottom
+Arm behind top
+Arm behind bottom
+Leg front
+Leg behind

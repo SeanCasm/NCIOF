@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 283d8eea624cfcb4d8478e4904623084
+  m_SerializeEntries:
+  - m_GUID: db929a2c90d50024aaa69fd4da518b56
+    m_Address: Assets/Prefabs/Peterson.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 167f6a9521b4e1c4ea9891075455a22d
+    m_Address: Assets/Prefabs/Shotgun.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d5c7d8190b264294f9abf0c844ad881d
+    m_Address: Assets/Prefabs/simple gun.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: f9f2d041469a14f43b5b18b0672121eb
+    m_Address: Assets/Prefabs/Heart.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d4fb303461bc3584aaf80da81720fa12
+    m_Address: Assets/Prefabs/bullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: fe570316da8dc8b4cbbd37865d6f1f60
+    m_Address: Assets/Prefabs/Pellet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a1dee0ee57f8ca9428443118b358a1b2, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4da2c253aaec46746a4fa9ef30e97c50, type: 2}
+    - {fileID: 11400000, guid: 70b411580b1ba74498522e3eb8bcfdbe, type: 2}

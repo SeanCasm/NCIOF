@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: Body parts
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Head
+    m_Hash: 130111906
+    m_CategoryList:
+    - m_Name: A
+      m_Hash: -740712821
+      m_Sprite: {fileID: -5533064408089820259, guid: da9a3c4d34f4a1d4c88cc31c3c681b9f, type: 3}
+    - m_Name: B
+      m_Hash: 1255198513
+      m_Sprite: {fileID: -6908687712067422404, guid: 317d939cfe09736468e1fbe3f37a9897, type: 3}
+  - m_Name: Torso
+    m_Hash: -425815167
+    m_CategoryList:
+    - m_Name: A
+      m_Hash: -740712821
+      m_Sprite: {fileID: 3024561901987312879, guid: da9a3c4d34f4a1d4c88cc31c3c681b9f, type: 3}
+    - m_Name: B
+      m_Hash: 1255198513
+      m_Sprite: {fileID: -5295189297475087019, guid: 317d939cfe09736468e1fbe3f37a9897, type: 3}
+  - m_Name: Arm front top
+    m_Hash: -1325934044
+    m_CategoryList:
+    - m_Name: A
+      m_Hash: -740712821
+      m_Sprite: {fileID: -8310578835852675831, guid: da9a3c4d34f4a1d4c88cc31c3c681b9f, type: 3}
+    - m_Name: B
+      m_Hash: 1255198513
+      m_Sprite: {fileID: 4197860276205774954, guid: 317d939cfe09736468e1fbe3f37a9897, type: 3}
+  - m_Name: Arm front bottom
+    m_Hash: 1081647460
+    m_CategoryList:
+    - m_Name: A
+      m_Hash: -740712821
+      m_Sprite: {fileID: -5734650901942117911, guid: da9a3c4d34f4a1d4c88cc31c3c681b9f, type: 3}
+    - m_Name: B
+      m_Hash: 1255198513
+      m_Sprite: {fileID: -893941498615205287, guid: 317d939cfe09736468e1fbe3f37a9897, type: 3}
+  - m_Name: Arm behind top
+    m_Hash: 652488801
+    m_CategoryList:
+    - m_Name: A
+      m_Hash: -740712821
+      m_Sprite: {fileID: -8120647390411180155, guid: da9a3c4d34f4a1d4c88cc31c3c681b9f, type: 3}
+    - m_Name: B
+      m_Hash: 1255198513
+      m_Sprite: {fileID: 6904948063947854072, guid: 317d939cfe09736468e1fbe3f37a9897, type: 3}
+  - m_Name: Arm behind bottom
+    m_Hash: 369538145
+    m_CategoryList:
+    - m_Name: A
+      m_Hash: -740712821
+      m_Sprite: {fileID: 7994279647542436194, guid: da9a3c4d34f4a1d4c88cc31c3c681b9f, type: 3}
+    - m_Name: B
+      m_Hash: 1255198513
+      m_Sprite: {fileID: -3889672887680698622, guid: 317d939cfe09736468e1fbe3f37a9897, type: 3}
+  - m_Name: Leg front
+    m_Hash: 935373012
+    m_CategoryList:
+    - m_Name: A
+      m_Hash: -740712821
+      m_Sprite: {fileID: -8483850794404625119, guid: da9a3c4d34f4a1d4c88cc31c3c681b9f, type: 3}
+    - m_Name: B
+      m_Hash: 1255198513
+      m_Sprite: {fileID: 8878647547939253488, guid: 317d939cfe09736468e1fbe3f37a9897, type: 3}
+  - m_Name: Leg behind
+    m_Hash: 2024817098
+    m_CategoryList:
+    - m_Name: A
+      m_Hash: -740712821
+      m_Sprite: {fileID: -4137518599701313270, guid: da9a3c4d34f4a1d4c88cc31c3c681b9f, type: 3}
+    - m_Name: B
+      m_Hash: 1255198513
+      m_Sprite: {fileID: 2331481080255810221, guid: 317d939cfe09736468e1fbe3f37a9897, type: 3}

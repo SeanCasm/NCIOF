@@ -79,7 +79,7 @@ public sealed class PlayerController : MonoBehaviour
         if(mouseSight.GetX()>transform.GetX()){
             transform.localScale=new Vector2(.8f,.8f);
         }else{
-            transform.localScale = new Vector2(-8f, .8f);
+            transform.localScale = new Vector2(-.8f, .8f);
         }
     }
     public void OnMove(InputAction.CallbackContext context)

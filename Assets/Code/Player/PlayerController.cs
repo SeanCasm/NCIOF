@@ -43,6 +43,7 @@ public sealed class PlayerController : MonoBehaviour
     #region Unity Methods
     void Awake()
     {
+        idle=true;
         mouseSight.SetParent(null);
         mainCam=Camera.main;
         animator = GetComponent<Animator>();

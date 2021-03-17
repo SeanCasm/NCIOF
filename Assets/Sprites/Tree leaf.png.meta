@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 679168e15e86e9847863cd9d7e1da6f0
+guid: 17e9f23ce932296458b69713dc47a2f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8135663367076951168
-    second: Mine_0
+      213: -3204731754470556463
+    second: Tree leaf_0
   - first:
-      213: -6017924223876201014
-    second: Mine_1
+      213: -3173234593650982367
+    second: Tree leaf_2
   - first:
-      213: 8499149524133847469
-    second: Mine_2
+      213: 6363114752772920992
+    second: Tree leaf_3
   - first:
-      213: 4794421619490200746
-    second: Mine_3
+      213: -4330452974124207428
+    second: Tree leaf_5
+  - first:
+      213: -8880149438975741503
+    second: Tree leaf_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -44,7 +47,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -77,10 +80,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -89,10 +92,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 64
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,11 +103,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 64
+    buildTarget: WebGL
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mine_0
+      name: Tree leaf_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 39
-        width: 32
-        height: 10
+        y: 210
+        width: 100
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 084b7ce4abea7e070800000000000000
-      internalID: 8135663367076951168
+      spriteID: 1dc3e5ed2718683d0800000000000000
+      internalID: -3204731754470556463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mine_1
+      name: Tree leaf_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 39
-        width: 32
-        height: 10
+        x: 104
+        y: 224
+        width: 88
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac504ae7dc90c7ca0800000000000000
-      internalID: -6017924223876201014
+      spriteID: 122c37813f766f3d0800000000000000
+      internalID: -3173234593650982367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mine_2
+      name: Tree leaf_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 7
-        width: 32
-        height: 10
+        x: 3
+        y: 109
+        width: 94
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da1ade6367b03f570800000000000000
-      internalID: 8499149524133847469
+      spriteID: 0a6d31887235e4850800000000000000
+      internalID: 6363114752772920992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mine_3
+      name: Tree leaf_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 7
-        width: 32
-        height: 10
+        x: 106
+        y: 113
+        width: 87
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,8 +195,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aac9a2d9f05398240800000000000000
-      internalID: 4794421619490200746
+      spriteID: cb2fac8b6f327e3c0800000000000000
+      internalID: -4330452974124207428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree leaf_15
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 9
+        width: 80
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c17771622f53c480800000000000000
+      internalID: -8880149438975741503
       vertices: []
       indices: 
       edges: []

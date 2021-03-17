@@ -12,13 +12,11 @@ public class Grab : MonoBehaviour
     [SerializeField] Transform backArmTarget;
     [Tooltip("Back arm LimbSolver2D to update the arm target following player aim with two hands gun.")]
     [SerializeField] LimbSolver2D limbSolver2D;
-    Collider2D hurt;
     private PlayerController playerController;
     public static Action throwGun;
     private void Awake() {
         throwGun +=HandleThrow;
         playerController=GetComponentInParent<PlayerController>();
-        hurt=GetComponent<Collider2D>();
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Gun")){

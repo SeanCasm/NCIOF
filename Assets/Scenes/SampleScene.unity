@@ -187,49 +187,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 253766142, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.018169368
-      objectReference: {fileID: 0}
-    - target: {fileID: 548728894, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.70934737
-      objectReference: {fileID: 0}
-    - target: {fileID: 548728894, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.70485914
-      objectReference: {fileID: 0}
     - target: {fileID: 774604432459834535, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
       propertyPath: m_Name
       value: Peterson
-      objectReference: {fileID: 0}
-    - target: {fileID: 774604432459834535, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614132935132428499, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.129
-      objectReference: {fileID: 0}
-    - target: {fileID: 3140032925607462195, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3140032925607462195, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3735470952569819577, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99966145
-      objectReference: {fileID: 0}
-    - target: {fileID: 3735470952569819577, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.02602233
-      objectReference: {fileID: 0}
-    - target: {fileID: 4838342170123445841, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8882440520795228174, guid: db929a2c90d50024aaa69fd4da518b56, type: 3}
       propertyPath: m_RootOrder

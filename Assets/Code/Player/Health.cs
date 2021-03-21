@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Game.Player{
-    public class Health : HealthBase<int>,IVisualDamageable
+    public class Health : HealthBase<int>
     {
         private SpriteRenderer spriteRenderer;
         private float currentHealth;
@@ -11,9 +11,9 @@ namespace Game.Player{
             currentHealth=health;
         }
         #region Health methods
-        public IEnumerator VisualFeedBack()
+        public IEnumerator VisualFeedBack(Color color)
         {
-            spriteRenderer.color = Color.red;
+            spriteRenderer.color = color;
             yield return new WaitForSeconds(0.1f);
             spriteRenderer.color = Color.white;
         }
@@ -27,12 +27,14 @@ namespace Game.Player{
         public override void AddDamage(int amount)
         {
             currentHealth -=amount;
+            StartCoroutine(VisualFeedBack(Color.red));
             //PlayerUI.updateUI.Invoke(currentHealth);
             if(currentHealth <=0)OnZeroHealth();
         }
         public void AddHealth(int amount){
             if(currentHealth<health){
                 float dif=health-currentHealth;
+                StartCoroutine(VisualFeedBack(Color.green));
                 currentHealth+=amount-dif;
                 //PlayerUI.updateUI.Invoke(currentHealth);
             }

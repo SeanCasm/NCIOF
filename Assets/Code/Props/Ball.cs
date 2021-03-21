@@ -80,7 +80,6 @@ public class Ball : MonoBehaviour
                 component.parentLevel++;
                 component.Damage--;
                 ball.transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2);
-                print("XD");
             }
         }
         Destroy(gameObject);

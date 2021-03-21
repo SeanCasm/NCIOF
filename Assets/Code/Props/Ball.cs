@@ -5,17 +5,20 @@ using UnityEngine.AddressableAssets;
 public class Ball : MonoBehaviour
 {
     #region Properties
+    [Header("Settings")]
     [SerializeField] int damage;
-    [SerializeField] int totalChilds;
     [SerializeField] float speed;
-    [SerializeField] Collider2D trigger;
+
+    [Header("Child settings")]
+    [SerializeField] int totalChilds;
+    [SerializeField] byte maxParentLevel;
     [SerializeField] AssetReference childBall;
     private List<GameObject> ball;
     private Vector3 direction;
+    private Collider2D trigger;
     private Rigidbody2D rigid;
     private Vector2 lastVelocity;
     public bool crossedOnSide { get; set; }
-    private bool hitted;
     public byte parentLevel { get; set; } = 0;
     public int Damage { get => damage; set => damage = value; }
     #endregion
@@ -23,6 +26,7 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        trigger = GetComponentInChildren<Collider2D>();
     }
     private void Start()
     {
@@ -50,7 +54,7 @@ public class Ball : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.IsTouching(trigger))
         {
             other.GetComponent<Game.Player.Health>().AddDamage(damage);
             Break();
@@ -66,23 +70,19 @@ public class Ball : MonoBehaviour
     }
     public void Break()
     {
-        if (!hitted)
+        if (parentLevel <= maxParentLevel)
         {
-            hitted = true;
-            if (parentLevel <= 2)
+            foreach (var item in ball)
             {
-                foreach (var item in ball)
-                {
-                    var ball = Instantiate(item, transform.position, Quaternion.identity, null);
-                    var component = ball.GetComponent<Ball>();
-                    component.crossedOnSide = true;
-                    component.parentLevel++;
-                    component.Damage--;
-                    ball.transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2);
-
-                }
+                var ball = Instantiate(item, transform.position, Quaternion.identity, null);
+                var component = ball.GetComponent<Ball>();
+                component.crossedOnSide = true;
+                component.parentLevel++;
+                component.Damage--;
+                ball.transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2);
+                print("XD");
             }
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }

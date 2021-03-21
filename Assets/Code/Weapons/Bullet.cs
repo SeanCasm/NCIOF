@@ -22,6 +22,7 @@ public class Bullet : MonoBehaviour
             case "Enemy":
                 var component=other.GetComponentInParent<Ball>();
                 component.Break();
+                Destroy(gameObject);
             break;
             case "Ground":
                 Destroy(gameObject);

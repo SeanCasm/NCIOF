@@ -5,7 +5,7 @@ namespace Game.Props{
     /// <summary>
     /// Health class exclusive to exploding props on game.
     /// </summary>
-    public class Health : HealthBase<int>, IVisualDamageable
+    public class Health : HealthBase<int>
     {
         [Tooltip("Hurtbox identificator, requested on acquired guns or items in game.")]
         [SerializeField]int iD;

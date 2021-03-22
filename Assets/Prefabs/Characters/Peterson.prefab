@@ -1376,6 +1376,7 @@ GameObject:
   - component: {fileID: 2158395084522464619}
   - component: {fileID: 2337010755858762705}
   - component: {fileID: 598602269331898390}
+  - component: {fileID: 574354463}
   m_Layer: 6
   m_Name: Peterson
   m_TagString: Player
@@ -1645,6 +1646,24 @@ MonoBehaviour:
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!114 &574354463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774604432459834535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b3c90696f74b34b961b507929a51a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontArm: {fileID: 253766142}
+  gunPoint: {fileID: 3735470952569819577}
+  backArmAnimator: {fileID: 4968040375279151614}
+  backArmTarget: {fileID: 1076643256267752755}
+  gunClassHandler: {fileID: 11400000, guid: 2551868c42237064aae6742450b1ebc6, type: 2}
+  limbSolver2D: {fileID: 8616743192146945518}
 --- !u!1 &1540954346340764000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,7 +1958,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6348020019353810335}
   - component: {fileID: 6938731664449868639}
-  - component: {fileID: 449433996}
   m_Layer: 6
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1977,23 +1995,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.027952734, y: -0.013976321}
   m_Size: {x: 0.52047455, y: 1.048495}
   m_Direction: 0
---- !u!114 &449433996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7246734381111613143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f42476650768b349b69b90870a752eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frontArm: {fileID: 949424088}
-  gunPoint: {fileID: 3735470952569819577}
-  backArmAnimator: {fileID: 4968040375279151614}
-  backArmTarget: {fileID: 1076643256267752755}
-  limbSolver2D: {fileID: 8616743192146945518}
 --- !u!1 &7570222362963404319
 GameObject:
   m_ObjectHideFlags: 0

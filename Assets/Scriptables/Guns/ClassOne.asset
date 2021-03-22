@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: ClassOne
   m_EditorClassIdentifier: 
   classGuns:
-  - m_AssetGUID: d5c7d8190b264294f9abf0c844ad881d
-    m_SubObjectName: 
-    m_SubObjectType: 
-  - m_AssetGUID: 167f6a9521b4e1c4ea9891075455a22d
-    m_SubObjectName: 
-    m_SubObjectType: 
+  - {fileID: 3956423367215175661, guid: d5c7d8190b264294f9abf0c844ad881d, type: 3}
+  - {fileID: 2070079114374017930, guid: 167f6a9521b4e1c4ea9891075455a22d, type: 3}

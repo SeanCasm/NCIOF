@@ -6,10 +6,6 @@ public sealed class ClassHandler : MonoBehaviour
 {
     public static int classIndex;
     public void SetClass(int index){
-         switch(index){
-            case 1:
-                classIndex=index;
-            break;
-         }
+        classIndex=index;
     }
 }

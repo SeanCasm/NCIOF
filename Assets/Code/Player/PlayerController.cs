@@ -104,7 +104,7 @@ public sealed class PlayerController : MonoBehaviour
     }
     public void OnFire(InputAction.CallbackContext context){
         if(context.performed && movement){
-            if(gun!=null){
+            if(gun!=null && gun.gameObject.activeSelf){
                 gun.Shoot();
             }
         }

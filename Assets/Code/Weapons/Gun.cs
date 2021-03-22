@@ -66,8 +66,8 @@ public class Gun : MonoBehaviour
         totalAmmo--;
         if (totalAmmo <= 0)
         {
-            if (grabType == HandsForGrab.one) Player.Inventory.instance.SetGun(1);
-            else Player.Inventory.instance.SetGun(2);
+            if (grabType == HandsForGrab.one){gameObject.SetActive(false); GunUISwapper.gunSwapper.Invoke(1);}
+            else{gameObject.SetActive(false); GunUISwapper.gunSwapper.Invoke(0);}
         }
     }
     protected virtual void SetDirection(Bullet gunBullet){

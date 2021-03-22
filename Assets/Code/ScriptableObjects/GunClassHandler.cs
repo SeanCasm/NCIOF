@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 public class GunClassHandler : ScriptableObject
 {
     [SerializeField]GunClass[] gunClasses;
-    public AssetReference[] GetClass(int index){
+    public GameObject[] GetClass(int index){
         return gunClasses[index].ClassGuns;
     }
 }

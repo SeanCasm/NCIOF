@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.U2D.IK;
 namespace Player
 {
@@ -18,40 +17,40 @@ namespace Player
         [SerializeField] LimbSolver2D limbSolver2D;
         private PlayerController playerController;
         public GameObject[] guns { get; set; }
-        private AssetReference[] asset;
-        private int assetReferenceIndex;
+
         private void Awake()
         {
             playerController = GetComponent<PlayerController>();
             instance = this;
             guns=new GameObject[2];
-            asset=new AssetReference[2];
-            asset=gunClassHandler.GetClass(ClassHandler.classIndex);
-            for(int i=0;i<2;i++){
-                assetReferenceIndex=i;
-                asset[i].LoadAssetAsync<GameObject>().Completed+=LoadClass;
+            for(int i=0;i<guns.Length;i++){
+                guns[i]=Instantiate(gunClassHandler.GetClass(ClassHandler.classIndex)[i], gunPoint, frontArm);
+                SetGunFirstTime(i);
             }
         }
         private void OnEnable() {
             GunUISwapper.gunSwapper += GrabAmmo;
         }
-        private void LoadClass(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj){
-            guns[assetReferenceIndex]=obj.Result;
-        }
         public void SetGun(int index)
         {
             GunUISwapper.gunSwapper.Invoke(index);
         }
+        private void SetGunFirstTime(int index){
+            var obj = guns[index];
+            Transform gunTransform = guns[index].transform;
+            gunTransform.SetParent(frontArm);
+            gunTransform.position = gunPoint.position;
+            gunTransform.localScale = gunPoint.localScale; // the scale sets back to x:1,y:1
+
+            gunTransform.rotation = gunPoint.transform.parent.rotation;
+            Gun gun = guns[index].GetComponent<Gun>();
+            if (index != 0) obj.SetActive(false);
+            else playerController.gun = gun;
+        }
         private void GrabAmmo(int index)
         {
-            Transform otherTransform = guns[index].transform;
-            Vector2 scale = otherTransform.localScale;
-            otherTransform.SetParent(frontArm);
-            otherTransform.position = gunPoint.position;
-            otherTransform.localScale = gunPoint.localScale; // the scale sets back to x:1,y:1
-
-            otherTransform.rotation = gunPoint.transform.parent.rotation;
             Gun gun = guns[index].GetComponent<Gun>();
+            gun.gameObject.SetActive(true);
             playerController.gun = gun;
             if (gun.GunGrabType == Gun.HandsForGrab.two)
             {

@@ -12,7 +12,7 @@ public class GunUISwapper : MonoBehaviour
         gunSwapper+=HandleUISwap;
     }
     private void HandleUISwap(int index){
-        gunBullets.sizeDelta=new Vector2(gunBullets.sizeDelta.x,gunBullets.sizeDelta.y-gunBulletSizeWith);
+        /*gunBullets.sizeDelta=new Vector2(gunBullets.sizeDelta.x,gunBullets.sizeDelta.y-gunBulletSizeWith);*/
     }
     private void OnDisable() {
         gunSwapper-=HandleUISwap;

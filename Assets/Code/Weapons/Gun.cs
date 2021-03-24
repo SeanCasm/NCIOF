@@ -14,11 +14,12 @@ public class Gun : MonoBehaviour
     [SerializeField] int iD;
     [Tooltip("The grab type from the gun, one hand for small guns, and two hands for big guns.")]
     [SerializeField]HandsForGrab grabType; 
+    [SerializeField]float bulletSize;
     [SerializeField]protected AssetReference bulletReference;
     protected GameObject bullet;
     protected int currentAmmo;
+    public int CurrentAmmo{get=>currentAmmo;}
     public bool selected{get;set;}
-    protected float bulletSize; 
     public HandsForGrab GunGrabType{get=>grabType;}
     public enum HandsForGrab
     {
@@ -70,8 +71,9 @@ public class Gun : MonoBehaviour
         }
     }
     public virtual void Shoot(){
+        print("XD");
         currentAmmo--;
-        GunUIHandler.gunAmmo.Invoke(iD, -bulletSize,reloadTime);
+        GunUIHandler.gunAmmo.Invoke(iD, bulletSize*currentAmmo,reloadTime);
         if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());

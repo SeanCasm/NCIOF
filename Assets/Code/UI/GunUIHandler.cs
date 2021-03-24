@@ -13,10 +13,9 @@ public class GunUIHandler : MonoBehaviour
     }
     private void AmmoHandler(int index,float size,float time){
         var sizeDelta=gunBullets[index].sizeDelta;
-        float newY=sizeDelta.y+size;
-        sizeDelta =new Vector2(sizeDelta.x,newY);
+        sizeDelta =new Vector2(sizeDelta.x,size);
         gunBullets[index].sizeDelta=sizeDelta;
-        if(newY==0)StartCoroutine(Reload(index,time));
+        if(size ==0)StartCoroutine(Reload(index,time));
     }
     /// <summary>
     /// Reloads a gun ammo UI.

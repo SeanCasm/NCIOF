@@ -11,15 +11,17 @@ public class Pistol : Gun
     }
     public override void Shoot()
     {
-        var obj = bullets[currentAmmo - 1];
-        Bullet gunBullet = obj.GetComponent<Bullet>();
-        base.bulletSize = gunBullet.BulletInterfaceSize;
+        print("XD2");
         base.Shoot();
-        obj.SetActive(true);
-        obj.transform.SetParent(null);
-        base.SetDirection(gunBullet);
-        obj.transform.eulerAngles = transform.eulerAngles;
-        gunBullet.gun=this;
-        gunBullet.damage = damage;
+        if(base.currentAmmo>-1){
+            var obj = bullets[currentAmmo];
+            Bullet gunBullet = obj.GetComponent<Bullet>();
+            obj.SetActive(true);
+            obj.transform.SetParent(null);
+            base.SetDirection(gunBullet);
+            obj.transform.eulerAngles = transform.eulerAngles;
+            gunBullet.gun = this;
+            gunBullet.damage = damage;
+        }
     }
 }

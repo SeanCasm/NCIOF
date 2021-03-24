@@ -102,6 +102,7 @@ MonoBehaviour:
   reloadTime: 2
   iD: 0
   grabType: 0
+  bulletSize: 10
   bulletReference:
     m_AssetGUID: d4fb303461bc3584aaf80da81720fa12
     m_SubObjectName: 

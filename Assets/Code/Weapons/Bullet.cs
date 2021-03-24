@@ -7,6 +7,9 @@ public class Bullet : MonoBehaviour
     [Header("Settings")]
     [Tooltip("Speed of the bullet, multiplied by Time.deltaTime so needs a high value.")]
     [SerializeField]float speed;
+    [SerializeField] float bulletInterfaceSize;
+    public float BulletInterfaceSize { get => bulletInterfaceSize; }
+
     private Rigidbody2D rigid;
     public float damage { get; set; }
         

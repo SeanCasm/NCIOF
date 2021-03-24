@@ -8,16 +8,17 @@ public class Pistol : Gun
     {
         base.Start();
         StartCoroutine(base.WaitBulletLoad());
-
     }
     public override void Shoot()
     {
-        base.Shoot();
-        var obj = bullets[totalAmmo];
+        var obj = bullets[currentAmmo-1];
         Bullet gunBullet = obj.GetComponent<Bullet>();
+        base.bulletSize=gunBullet.BulletInterfaceSize;
+        base.Shoot();
         obj.SetActive(true);
         obj.transform.SetParent(null);
         base.SetDirection(gunBullet);
+        obj.transform.eulerAngles = transform.eulerAngles;
         gunBullet.damage = damage;
     }
 }

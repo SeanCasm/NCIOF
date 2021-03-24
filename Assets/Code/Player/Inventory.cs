@@ -28,13 +28,6 @@ namespace Player
                 SetGunFirstTime(i);
             }
         }
-        private void OnEnable() {
-            GunUISwapper.gunSwapper += GrabAmmo;
-        }
-        public void SetGun(int index)
-        {
-            GunUISwapper.gunSwapper.Invoke(index);
-        }
         private void SetGunFirstTime(int index){
             var obj = guns[index];
             Transform gunTransform = guns[index].transform;
@@ -61,9 +54,6 @@ namespace Player
                 backArmTarget.localPosition = Vector2.zero;
                 backArmAnimator.enabled = false;
             }
-        }
-        private void OnDisable() {
-            GunUISwapper.gunSwapper-=GrabAmmo;
         }
     }
 }

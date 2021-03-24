@@ -8,10 +8,18 @@ public class Gun : MonoBehaviour
     [Header("Settings")]
     [SerializeField]protected int totalAmmo;
     [SerializeField]protected float damage;
+    [SerializeField]float reloadTime;
+     
+    [Tooltip("ID on the class.")]
+    [SerializeField] int iD;
     [Tooltip("The grab type from the gun, one hand for small guns, and two hands for big guns.")]
     [SerializeField]HandsForGrab grabType; 
     [SerializeField]protected AssetReference bulletReference;
     protected GameObject bullet;
+    protected int currentAmmo;
+    public bool selected{get;set;}
+    protected float bulletSize;
+    public static event Action reload;
     public HandsForGrab GunGrabType{get=>grabType;}
     public enum HandsForGrab
     {
@@ -21,10 +29,10 @@ public class Gun : MonoBehaviour
     protected List<GameObject> bullets;
     protected Transform shootPosition;
     protected void Start() {
+        currentAmmo=totalAmmo;
         shootPosition=gameObject.GetChild(0).transform;
         bullets = new List<GameObject>();
         bulletReference.LoadAssetAsync<GameObject>().Completed += OnLoadDone;
-
     }
     protected void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj){
         bullet=obj.Result;
@@ -63,15 +71,27 @@ public class Gun : MonoBehaviour
         }
     }
     public virtual void Shoot(){
-        totalAmmo--;
-        if (totalAmmo <= 0)
+        currentAmmo--;
+        GunUIHandler.gunAmmo.Invoke(iD, -bulletSize);
+        if (currentAmmo <= 0)
         {
-            if (grabType == HandsForGrab.one){gameObject.SetActive(false); GunUISwapper.gunSwapper.Invoke(1);}
-            else{gameObject.SetActive(false); GunUISwapper.gunSwapper.Invoke(0);}
+            gameObject.SetActive(false);
         }
+    }
+    protected IEnumerator Reload()
+    {
+        float time=0;
+        while (time<=reloadTime)
+        {
+            time+=0.1f;
+            yield return new WaitForSeconds(.1f);
+        }
+        currentAmmo=totalAmmo;
+        GunUIHandler.gunAmmo.Invoke(iD, currentAmmo);
     }
     protected virtual void SetDirection(Bullet gunBullet){
         if (transform.root.localScale.x > 0) gunBullet.direction = transform.right;
         else gunBullet.direction = -transform.right;
+         
     }
 }

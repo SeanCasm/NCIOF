@@ -8,15 +8,6 @@ TextureImporter:
   - first:
       213: 1572045536873291687
     second: Some bullets_1
-  - first:
-      213: -1953555519622550221
-    second: Some bullets_2
-  - first:
-      213: -6526422776885638244
-    second: Some bullets_3
-  - first:
-      213: 174847618680135779
-    second: Some bullets_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -80,7 +71,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -92,7 +83,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 64
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -104,7 +95,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 64
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -121,12 +112,12 @@ TextureImporter:
       name: Some bullets_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 54
+        x: 0
+        y: 53
         width: 27
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +133,12 @@ TextureImporter:
       name: Some bullets_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 53
-        width: 31
-        height: 11
+        x: 0
+        y: 40
+        width: 27
+        height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,69 +146,6 @@ TextureImporter:
       bones: []
       spriteID: 7af1214361701d510800000000000000
       internalID: 1572045536873291687
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Some bullets_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 43
-        width: 31
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 33de4e3fa9393e4e0800000000000000
-      internalID: -1953555519622550221
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Some bullets_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 24
-        width: 45
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9b86b9101d7d65a0800000000000000
-      internalID: -6526422776885638244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Some bullets_4
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 0
-        width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 360a0499bfe2d6200800000000000000
-      internalID: 174847618680135779
       vertices: []
       indices: 
       edges: []

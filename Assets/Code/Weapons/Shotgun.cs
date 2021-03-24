@@ -12,7 +12,7 @@ public class Shotgun : Gun
         StartCoroutine(base.WaitBulletLoad(totalAmmo*totalPellets));
     }
     /// <summary>
-    /// Instantiate the bullets in 5 directions.
+    /// Instantiate the bullets in 5 angles.
     /// </summary>
     public override void Shoot(){
         base.Shoot();
@@ -25,9 +25,6 @@ public class Shotgun : Gun
             base.SetDirection(bullet);
             Quaternion rotation = Quaternion.Euler(0, 0, i);
             bullet.direction=rotation*bullet.direction;
-            float zEuler = v.transform.eulerAngles.z;
-            zEuler = i;
-            v.transform.eulerAngles = new Vector3(0, 0, zEuler);
 
             bullet.damage = damage;
             pelletsShooted++;

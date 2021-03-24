@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 650
+  bulletInterfaceSize: 10
 --- !u!50 &8626950580796120860
 Rigidbody2D:
   serializedVersion: 4

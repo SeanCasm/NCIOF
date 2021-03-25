@@ -6,7 +6,6 @@ using UnityEngine.AddressableAssets;
 public class Gun : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField]protected int totalAmmo;
     [SerializeField]protected float damage;
     [SerializeField]float reloadTime;
      
@@ -14,8 +13,18 @@ public class Gun : MonoBehaviour
     [SerializeField] int iD;
     [Tooltip("The grab type from the gun, one hand for small guns, and two hands for big guns.")]
     [SerializeField]HandsForGrab grabType; 
-    [SerializeField]float bulletSize;
     [SerializeField]protected AssetReference bulletReference;
+    public Properties gunProperties;
+    [System.Serializable]
+    public struct Properties
+    {
+        public Sprite icon;
+        public Sprite bullet;
+        public int totalAmmo;
+        public float bulletWidth;
+        public float bulletHeight;
+    }
+    public int ID{get=>iD;}
     protected GameObject bullet;
     protected int currentAmmo;
     public int CurrentAmmo{get=>currentAmmo;}
@@ -29,7 +38,7 @@ public class Gun : MonoBehaviour
     protected List<GameObject> bullets;
     protected Transform shootPosition;
     protected void Start() {
-        currentAmmo=totalAmmo;
+        currentAmmo=gunProperties.totalAmmo;
         shootPosition=gameObject.GetChild(0).transform;
         bullets = new List<GameObject>();
         bulletReference.LoadAssetAsync<GameObject>().Completed += OnLoadDone;
@@ -44,7 +53,7 @@ public class Gun : MonoBehaviour
         {
             if (bullet != null)
             {
-                for (int i = 0; i < totalAmmo; i++)
+                for (int i = 0; i < gunProperties.totalAmmo; i++)
                 {
                     bullets.Add(Instantiate(bullet, shootPosition.position, Quaternion.identity));
                     bullets[i].transform.SetParent(shootPosition);
@@ -71,9 +80,8 @@ public class Gun : MonoBehaviour
         }
     }
     public virtual void Shoot(){
-        print("XD");
         currentAmmo--;
-        GunUIHandler.gunAmmo.Invoke(iD, bulletSize*currentAmmo,reloadTime);
+        GunUIHandler.gunAmmo.Invoke(iD, gunProperties.bulletWidth*currentAmmo,reloadTime);
         if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());
@@ -87,8 +95,8 @@ public class Gun : MonoBehaviour
             time+=0.1f;
             yield return new WaitForSeconds(.1f);
         }
-        currentAmmo=totalAmmo;
-        GunUIHandler.gunAmmo.Invoke(iD, currentAmmo*bulletSize,reloadTime);
+        currentAmmo=gunProperties.totalAmmo;
+        GunUIHandler.gunAmmo.Invoke(iD, currentAmmo*gunProperties.bulletWidth,reloadTime);
     }
     protected virtual void SetDirection(Bullet gunBullet){
         if (transform.root.localScale.x > 0) gunBullet.direction = transform.right;

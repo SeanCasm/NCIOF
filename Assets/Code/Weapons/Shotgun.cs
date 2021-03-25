@@ -9,7 +9,7 @@ public class Shotgun : Gun
     new void Start()
     {
         base.Start();
-        StartCoroutine(base.WaitBulletLoad(totalAmmo * totalPellets));
+        StartCoroutine(base.WaitBulletLoad(gunProperties.totalAmmo * totalPellets));
     }
     public override void Shoot()
     {

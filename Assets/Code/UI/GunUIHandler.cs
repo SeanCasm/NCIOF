@@ -2,14 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GunUIHandler : MonoBehaviour
 {
+    [SerializeField]GameObject[] gunInterface;
+    [SerializeField]Image[] gunImage,bulletImage;
     [SerializeField]RectTransform[] gunBullets;
     [SerializeField]RectTransform[] loadBars;
     public static Action<int,float,float> gunAmmo;
+    public static Action<int,bool> swappAmmo;
+    public static Action<Gun> gunInterfaceSetter;
     private void OnEnable() {
         gunAmmo+=AmmoHandler;
+        swappAmmo+=SwappAmmo;
+        gunInterfaceSetter+=SetGunUI;
     }
     private void AmmoHandler(int index,float size,float time){
         var sizeDelta=gunBullets[index].sizeDelta;
@@ -40,7 +46,23 @@ public class GunUIHandler : MonoBehaviour
         }
         loadBars[index].sizeDelta=new Vector2(0,loadBars[index].sizeDelta.y);//Sets the width back to zero. 
     }
+    /// <summary>
+    /// Sets guns UI at the game start.
+    /// </summary>
+    /// <param name="gunInterface"></param>
+    private void SetGunUI(Gun gunInterface) {
+        var iD=gunInterface.ID;
+        var str=gunInterface.gunProperties;
+        gunImage[iD].sprite=str.icon;
+        bulletImage[iD].sprite=str.bullet;
+        gunBullets[iD].sizeDelta=new Vector2(str.bulletHeight,str.totalAmmo * str.bulletWidth);
+    }
+    private void SwappAmmo(int current,bool active){
+        gunInterface[current].SetActive(active);
+    }
     private void OnDisable() {
         gunAmmo-=AmmoHandler;
+        swappAmmo -= SwappAmmo;
+        gunInterfaceSetter -= SetGunUI;
     }
 }

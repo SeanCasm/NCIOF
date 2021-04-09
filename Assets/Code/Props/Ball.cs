@@ -93,7 +93,6 @@ public class Ball : MonoBehaviour
                 var component = ball.GetComponent<Ball>();
                 component.crossedOnSide = true;
                 component.parentLevel++;
-                component.Damage--;
                 component.Points+=this.points+1;
                 ball.transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2);
             }

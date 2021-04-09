@@ -37,20 +37,20 @@ public sealed class BallSpawner : MonoBehaviour
             switch(difficultLevel){
                 case 1:
                     parentBalls++;
-                    if(parentBalls<=levelOneParentBallsOnScreen){
+                    if(parentBalls<=levelOneParentBallsOnScreen && totalBallsRemaining<levelOneParentBallsOnScreen){
                         Instantiate(ballTiers[0].gameObject, SpawnerPositionGenerator(), Quaternion.identity, null);
                     }
                 break;
                 case 2:
                     parentBalls++;
-                    if (parentBalls <= levelTwoParentBallsOnScreen)
+                    if (parentBalls <= levelTwoParentBallsOnScreen && totalBallsRemaining < levelOneParentBallsOnScreen)
                     {
                         Instantiate(ballTiers[Random.Range(0, 1)].gameObject, SpawnerPositionGenerator(), Quaternion.identity, null);
                     }
                 break;
                 case 3:
                     parentBalls++;
-                    if (parentBalls <= levelTwoParentBallsOnScreen)
+                    if (parentBalls <= levelTwoParentBallsOnScreen && totalBallsRemaining < levelOneParentBallsOnScreen)
                     {
                         Instantiate(ballTiers[Random.Range(1, 2)].gameObject, SpawnerPositionGenerator(), Quaternion.identity, null);
                     }
@@ -60,7 +60,6 @@ public sealed class BallSpawner : MonoBehaviour
             var time=Random.Range(minTimeSpawn, maxTimeSpawn);
             yield return new WaitForSeconds(time);
         }
-        ScoreUIHandler.UpdateRM();
     }
     #endregion
     private Vector2 SpawnerPositionGenerator(){

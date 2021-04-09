@@ -29,6 +29,7 @@ public class Shotgun : Gun
                 bullet.damage = damage;
                 pelletsShooted++;
             }
+            if(pelletsShooted==gunProperties.totalAmmo*totalPellets)pelletsShooted=0;//resets the pellets count
         }
     }
 }

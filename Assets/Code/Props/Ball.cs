@@ -8,7 +8,9 @@ public class Ball : MonoBehaviour
     [Header("Settings")]
     [SerializeField] int damage;
     [SerializeField] float speed;
-
+    [Tooltip("Parent points, child points will increment after parent ball get destroyed")]
+    [SerializeField] int points; 
+    [SerializeField] int ballTier;
     [Header("Child settings")]
     [SerializeField] int totalChilds;
     [SerializeField] byte maxParentLevel;
@@ -18,9 +20,12 @@ public class Ball : MonoBehaviour
     private Collider2D trigger;
     private Rigidbody2D rigid;
     private Vector2 lastVelocity;
+    int oi;
+    public int Points{get=>points;set=>points=value;}
     public bool crossedOnSide { get; set; }
     public byte parentLevel { get; set; } = 0;
     public int Damage { get => damage; set => damage = value; }
+
     #endregion
     #region Unity Methods
     private void Awake()
@@ -31,6 +36,7 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         ball = new List<GameObject>();
+        BallSpawner.totalBallsRemaining++;
         direction = Random.insideUnitCircle.normalized;
         childBall.LoadAssetAsync<GameObject>().Completed += OnComplete;
     }
@@ -54,10 +60,16 @@ public class Ball : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && other.IsTouching(trigger))
-        {
-            other.GetComponent<Game.Player.Health>().AddDamage(damage);
-            Break();
+        switch(other.tag){
+            case "Player":
+            other.GetComponentInParent<Game.Player.Health>().AddDamage(damage);
+            break;
+            case "Bullet":
+                oi++;
+                if(oi==1){
+                    Break();
+                }
+            break;
         }
     }
     #endregion
@@ -72,6 +84,9 @@ public class Ball : MonoBehaviour
     {
         if (parentLevel <= maxParentLevel)
         {
+            if(parentLevel==0){
+                BallSpawner.parentBalls--;
+            }
             foreach (var item in ball)
             {
                 var ball = Instantiate(item, transform.position, Quaternion.identity, null);
@@ -79,9 +94,13 @@ public class Ball : MonoBehaviour
                 component.crossedOnSide = true;
                 component.parentLevel++;
                 component.Damage--;
+                component.Points+=this.points+1;
                 ball.transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2);
             }
         }
+        int score=ScoreHandler.score+=points;
+        ScoreUIHandler.score.Invoke(score);
+        BallSpawner.totalBallsRemaining--;
         Destroy(gameObject);
     }
 }

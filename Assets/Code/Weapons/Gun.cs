@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 public class Gun : MonoBehaviour
 {
-    #region Encapsulated class
+    #region EventHandler
+    public static event EventHandler<GunZeroAmmoEventArgs> OnAmmoZero;
+
     public class GunZeroAmmoEventArgs : EventArgs
     {
         public int gunIndex;
@@ -33,11 +35,15 @@ public class Gun : MonoBehaviour
         public float bulletWidth;
         public float bulletHeight;
     }
-    public static event EventHandler<GunZeroAmmoEventArgs> OnAmmoZero;
     public int ID{get=>iD;}
     protected GameObject bullet;
     protected int currentAmmo;
     public int CurrentAmmo{get=>currentAmmo;}
+    #region Global gun precision
+    public static int bulletsShooted;
+    public static int enemiesImpacted;
+    public static int precision;
+    #endregion
     public HandsForGrab GunGrabType{get=>grabType;}
     public enum HandsForGrab
     {
@@ -102,7 +108,11 @@ public class Gun : MonoBehaviour
         EventHandlerFunction();
     }
     #endregion
+    public static void Precision(){
+        precision= (enemiesImpacted/bulletsShooted)*100;
+    }
     public virtual void Shoot(){
+        bulletsShooted++;
         currentAmmo--;
         EventHandlerFunction();
         if (currentAmmo <= 0)

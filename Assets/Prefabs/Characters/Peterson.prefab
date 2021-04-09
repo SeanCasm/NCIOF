@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 574354463}
   m_Layer: 6
   m_Name: Peterson
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1538,6 +1538,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e1b31b70-39f0-4ab7-b3c3-bacdc07f854b
     m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 699890d8-6dfb-4383-8d28-500d204e68a3
+    m_ActionName: Player/Selection[/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -1618,7 +1622,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a6ae3c0a08aae4d91c9b52d50747e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
+  bodyRenderers:
+  - {fileID: 1743705708}
+  - {fileID: 1056398521}
+  - {fileID: 163750189}
+  - {fileID: 949424089}
+  - {fileID: 715300618}
+  - {fileID: 262079134}
+  - {fileID: 715300618}
+  - {fileID: 262079134}
+  - {fileID: 1163979318}
+  - {fileID: 804445867}
 --- !u!114 &598602269331898390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1960,7 +1975,7 @@ GameObject:
   - component: {fileID: 6938731664449868639}
   m_Layer: 6
   m_Name: Hurtbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

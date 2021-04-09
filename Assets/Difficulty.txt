@@ -1,0 +1,11 @@
+Lvl 1:
+max parent balls on screen: 5
+max balls velocity: 5f
+
+Lvl 2:
+max parent balls on screen: 6
+max balls velocity: 5.5f
+
+Lvl 3:
+max parent balls on screen: 8
+max balls velocity: 6f

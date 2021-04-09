@@ -146,9 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2a3ddb691a57244b3869f4709911a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
-  totalChilds: 4
+  damage: 1
   speed: 5
+  points: 1
+  ballTier: 0
+  totalChilds: 2
+  maxParentLevel: 0
   childBall:
     m_AssetGUID: 09a121af51a385340b820af90fc43754
     m_SubObjectName: 

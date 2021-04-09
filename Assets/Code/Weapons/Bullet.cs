@@ -21,8 +21,7 @@ public class Bullet : MonoBehaviour
     protected void OnTriggerEnter2D(Collider2D other) {
         switch(other.tag){
             case "Enemy":
-                var component=other.GetComponentInParent<Ball>();
-                component.Break();
+                Gun.enemiesImpacted++;
                 BackToGun();
             break;
             case "Ground":
@@ -37,10 +36,12 @@ public class Bullet : MonoBehaviour
     /// Repositions the bullet back to the weapon that instance it.
     /// </summary>
     private void BackToGun(){
+        Gun.Precision();
         gameObject.transform.SetParent(gun.transform);
         gameObject.transform.position=gun.transform.position;
         direction = rigid.velocity=Vector2.zero;
 
         gameObject.SetActive(false);
     }
+    
 }

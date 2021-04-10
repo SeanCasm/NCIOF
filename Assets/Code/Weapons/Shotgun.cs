@@ -14,22 +14,19 @@ public class Shotgun : Gun
     public override void Shoot()
     {
         base.Shoot();
-        if(base.currentAmmo>-1){
-            for (int i = 30; i >= -30; i -= 15)
-            {
-                var v = bullets[pelletsShooted];
-                v.transform.SetParent(null);
-                v.SetActive(true);
-                Bullet bullet = v.GetComponent<Bullet>();
-                base.SetDirection(bullet);
-                Quaternion rotation = Quaternion.Euler(0, 0, i);
-                bullet.direction = rotation * bullet.direction;
+        for (int i = 30; i >= -30; i -= 15)
+        {
+            var v = bullets[pelletsShooted];
+            v.transform.SetParent(null);
+            v.SetActive(true);
+            Bullet bullet = v.GetComponent<Bullet>();
+            base.SetDirection(bullet);
+            Quaternion rotation = Quaternion.Euler(0, 0, i);
+            bullet.direction = rotation * bullet.direction;
 
-                bullet.gun = this;
-                bullet.damage = damage;
-                pelletsShooted++;
-            }
-            if(pelletsShooted==gunProperties.totalAmmo*totalPellets)pelletsShooted=0;//resets the pellets count
+            bullet.gun = this;
+            pelletsShooted++;
         }
+        if (pelletsShooted == gunProperties.totalAmmo * totalPellets) pelletsShooted = 0;//resets the pellets count
     }
 }

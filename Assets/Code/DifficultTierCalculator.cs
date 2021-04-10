@@ -2,25 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DifficultTierCalculator : MonoBehaviour
+public class TierCalculator : MonoBehaviour
 {
     [SerializeField]Game.Player.Health playerHealth;
     [SerializeField]float difficultUpdater;
+    public static int tierLvl;
     private void Start() {
         StartCoroutine(UpdateDifficult());
     }
     IEnumerator UpdateDifficult(){
         while(true){
-            float precision=Gun.precision;
             var dT=Game.Player.Health.noDamagedTime;
             var dL=BallSpawner.difficultLevel;
-            if(precision>=0 && precision<=20){
+            var score=ScoreHandler.score;
+            if(score<=100){
                 dL=1;
-            }else if((precision>20 && precision<=50) || dT>=15f){
+            }else if((score>100 && score<=200) || dT>=35f){
                 dL=2;
-            }else if(precision>50 && precision<=80 || dT >= 30f){
+            }else if((score>200 && score<=400) || dT >= 60f){
                 dL=3;
+            }else if((score>400 && score<=750) || dT>=75f){
+                dL=4;
+            }else if((score>750 && score<1000) && dT>=80f){
+                dL=5;
             }
+            tierLvl=dL;
             yield return new WaitForSeconds(difficultUpdater);
         }
     }  

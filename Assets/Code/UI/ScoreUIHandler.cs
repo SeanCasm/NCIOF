@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
+
 public class ScoreUIHandler : MonoBehaviour
 {
     [SerializeField]Text scoreText;
-    public static Text rBalls;
-    public static Action<int> score;
+    [SerializeField]TextMeshProUGUI text;
+    public static Action<int,int> score;
     private void OnEnable() {
         score+=UpdateScore;
     }
@@ -16,7 +18,8 @@ public class ScoreUIHandler : MonoBehaviour
         score -= UpdateScore;
         scoreText.text = "Score: ";
     }
-    private void UpdateScore(int amount){
+    private void UpdateScore(int amount,int level){
         scoreText.text="Score: "+amount.ToString();
+        text.text="Level: "+level.ToString();
     }
 }

@@ -56,7 +56,6 @@ public sealed class BallSpawner : MonoBehaviour
                     }
                 break;
             }
-            print(difficultLevel);
             var time=Random.Range(minTimeSpawn, maxTimeSpawn);
             yield return new WaitForSeconds(time);
         }

@@ -38,7 +38,7 @@ namespace Game.Player
 
             gunTransform.rotation = gunPoint.transform.parent.rotation;
             Gun gun = guns[index].GetComponent<Gun>();
-            GunUIHandler.gunInterfaceSetter.Invoke(gun);
+            GunUIHandler.instance.SetGunUI(gun);
             if (index != 0) obj.SetActive(false);
             else playerController.gun = gun;
         }

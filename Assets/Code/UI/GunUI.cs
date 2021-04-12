@@ -14,7 +14,7 @@ public class GunUI : MonoBehaviour
     /// <summary>
     /// Reloads a gun ammo UI.
     /// </summary>
-    public IEnumerator Reload(Gun.GunZeroAmmoEventArgs e)
+    public IEnumerator Reload(Gun.GunAmmoEvent e)
     {
         var sizeDelta = loadBar.sizeDelta;
         //this float represent the loading bar increment per miliseconds.

@@ -34,8 +34,7 @@ namespace Game.Player
             Transform gunTransform = guns[index].transform;
             gunTransform.SetParent(frontArm);
             gunTransform.position = gunPoint.position;
-            gunTransform.localScale = gunPoint.localScale; // the scale sets back to x:1,y:1
-
+            
             gunTransform.rotation = gunPoint.transform.parent.rotation;
             Gun gun = guns[index].GetComponent<Gun>();
             GunUIHandler.instance.SetGunUI(gun);

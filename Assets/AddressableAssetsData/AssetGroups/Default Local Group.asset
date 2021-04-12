@@ -77,6 +77,30 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 4673c37b8de89c048910ed51b6e38bdf
+    m_Address: Assets/Prefabs/Ball 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 32c944d4ed28fbf43a94e8f683b9b6bd
+    m_Address: Assets/Prefabs/Weapons/Short shotgun.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 6af774d45e60e2040adbc967e2cf4c42
+    m_Address: Assets/Prefabs/Weapons/Short pellet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 3bf3d223f2fdc9c4db581a4c7c13722c
+    m_Address: Assets/Prefabs/Weapons/M4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a1dee0ee57f8ca9428443118b358a1b2, type: 2}
   m_SchemaSet:

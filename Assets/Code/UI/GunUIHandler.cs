@@ -15,7 +15,7 @@ public class GunUIHandler : MonoBehaviour
         public RectTransform gunBullets;
         public RectTransform loadBar;
         public float currentLoadTime{get;set;}
-        public Gun.GunZeroAmmoEventArgs e;
+        public Gun.GunAmmoEvent e;
     }
     private float currentLoadTime;
     private void Start() {
@@ -27,7 +27,7 @@ public class GunUIHandler : MonoBehaviour
     private void OnDisable() {
         Gun.OnAmmoZero -= AmmoUIUpdateHandler;
     }
-    public void AmmoUIUpdateHandler(object sender,Gun.GunZeroAmmoEventArgs e){
+    public void AmmoUIUpdateHandler(object sender,Gun.GunAmmoEvent e){
         var sizeDelta=gunUI[e.gunIndex].gunBullets.sizeDelta;
         sizeDelta =new Vector2(sizeDelta.x,e.ammoBulletSize);
         gunUI[e.gunIndex].gunBullets.sizeDelta=sizeDelta;
@@ -36,7 +36,7 @@ public class GunUIHandler : MonoBehaviour
     /// <summary>
     /// Reloads a gun ammo UI.
     /// </summary>
-    IEnumerator Reload(Gun.GunZeroAmmoEventArgs e){
+    IEnumerator Reload(Gun.GunAmmoEvent e){
         var gun = gunUI[e.gunIndex];
         var sizeDelta=gun.loadBar.sizeDelta;
         //this float represent the loading bar increment per miliseconds.
@@ -69,7 +69,6 @@ public class GunUIHandler : MonoBehaviour
     public void SwappAmmo(int current,bool active){
         gunUI[current].currentLoadTime=currentLoadTime;
         gunUI[current].gunInterface.SetActive(active);
-        StopAllCoroutines();
         if(active){
             if (gunUI[current].currentLoadTime < gunUI[current].e.reloadTime) StartCoroutine(Reload(gunUI[current].e));
         }

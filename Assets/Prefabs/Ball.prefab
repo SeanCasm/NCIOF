@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1298068113}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,9 +101,7 @@ MonoBehaviour:
   damage: 1
   speed: 5
   points: 1
-  ballTier: 0
   totalChilds: 2
-  maxParentLevel: 0
   childBall:
     m_AssetGUID: 09a121af51a385340b820af90fc43754
     m_SubObjectName: 
@@ -144,4 +142,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.06
+  m_Radius: 0.08

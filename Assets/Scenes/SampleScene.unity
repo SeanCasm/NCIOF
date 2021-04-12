@@ -149,11 +149,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 30687436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc9e489f42a54bb499295143a58a2434, type: 3}
+  m_Script: {fileID: 11500000, guid: 834f7c5d937ddbb48be9fbc5045458e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 574354459}
-  difficultUpdater: 15
+  pHealth: {fileID: 574354459}
 --- !u!4 &30687438
 Transform:
   m_ObjectHideFlags: 0
@@ -2297,6 +2296,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballsToSpawn:
   - m_AssetGUID: 09a121af51a385340b820af90fc43754
+    m_SubObjectName: 
+    m_SubObjectType: 
+  - m_AssetGUID: 4673c37b8de89c048910ed51b6e38bdf
     m_SubObjectName: 
     m_SubObjectType: 
   spawnerLeftSide: {x: -12.3, y: 12.24}

@@ -1,8 +1,7 @@
-
 # Status
 
-In develop 45%(?)
+In develop 75%(?)
 ## Pre-preview
-![movie_001](https://user-images.githubusercontent.com/51692672/112419431-2d0dca80-8d0a-11eb-820f-d216a2d2cbbe.gif)
-
-
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/51692672/114255818-c92f0700-9983-11eb-88f2-0f5c6e51e69a.gif" alt="animated">
+</p>

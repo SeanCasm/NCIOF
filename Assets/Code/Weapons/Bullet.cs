@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour,IBullet
 {
     [Header("Settings")]
     [Tooltip("Speed of the bullet, multiplied by Time.deltaTime so needs a high value.")]

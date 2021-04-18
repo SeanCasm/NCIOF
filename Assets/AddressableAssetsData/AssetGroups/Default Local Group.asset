@@ -36,7 +36,7 @@ MonoBehaviour:
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: f9f2d041469a14f43b5b18b0672121eb
-    m_Address: Assets/Prefabs/Heart.prefab
+    m_Address: Items/Heart.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -72,13 +72,13 @@ MonoBehaviour:
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 09a121af51a385340b820af90fc43754
-    m_Address: Assets/Prefabs/Ball.prefab
+    m_Address: Balls/Ball.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 4673c37b8de89c048910ed51b6e38bdf
-    m_Address: Assets/Prefabs/Ball 2.prefab
+    m_Address: Balls/Ball 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -97,6 +97,42 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 3bf3d223f2fdc9c4db581a4c7c13722c
     m_Address: Assets/Prefabs/Weapons/M4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7a7c7c92fd26adc47b4c189deb805ce9
+    m_Address: Balls/Ball 3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 2284192c8436c4247960830e9b354dd5
+    m_Address: Balls/Ball 4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8104fe6d39dd7744385708ab2ed55ce4
+    m_Address: Assets/Prefabs/UI/Leave.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 69aab42bf2c241844bce56d8a7518ba5
+    m_Address: Items/Shield.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 5fd365655056cad4198c138e618287e2
+    m_Address: Balls/Ball 5.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 623d30c2cb19bce46b938cfd0504acbe
+    m_Address: Balls/Ball 6.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

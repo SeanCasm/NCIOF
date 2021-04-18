@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.U2D.IK;
 namespace Game.Player
 {
-public sealed class PlayerController : MonoBehaviour
+public sealed class PlayerController : MonoBehaviour,IPausable
     {
         #region Properties
         [Header("Movement settings")]
@@ -52,6 +52,9 @@ public sealed class PlayerController : MonoBehaviour
             inventory=GetComponent<Inventory>();
             rigid = GetComponent<Rigidbody2D>();
         }
+        private void OnEnable() {
+            Pause.Paused+=PauseGameHandle;
+        }
         private void FixedUpdate()
         {
             if (movement)
@@ -77,17 +80,19 @@ public sealed class PlayerController : MonoBehaviour
         #region Input
         public void OnLook(InputAction.CallbackContext context)
         {
-            mouseSightPosition = mainCam.ScreenToWorldPoint(context.ReadValue<Vector2>());
-            mouseSight.position = mouseSightPosition;
-            frontArmTarget.position = mouseSight.position;
-            if (secondHandGrab != null) secondHandGrab.position = twoHandsGun.position;
-            if (mouseSight.GetX() > transform.GetX())
-            {
-                transform.localScale = new Vector2(.8f, .8f);
-            }
-            else
-            {
-                transform.localScale = new Vector2(-.8f, .8f);
+            if(movement){
+                mouseSightPosition = mainCam.ScreenToWorldPoint(context.ReadValue<Vector2>());
+                mouseSight.position = mouseSightPosition;
+                frontArmTarget.position = mouseSight.position;
+                if (secondHandGrab != null) secondHandGrab.position = twoHandsGun.position;
+                if (mouseSight.GetX() > transform.GetX())
+                {
+                    transform.localScale = new Vector2(.8f, .8f);
+                }
+                else
+                {
+                    transform.localScale = new Vector2(-.8f, .8f);
+                }
             }
         }
         public void OnMove(InputAction.CallbackContext context)
@@ -108,23 +113,19 @@ public sealed class PlayerController : MonoBehaviour
         }
         public void OnPause(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                Pause.instance.PauseGame();
-            }
+            if (context.performed)Pause.pause.Invoke();
         }
         public void OnSelect(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
-                GunUIHandler.instance.SwappAmmo(inventory.gunIndex, false);//current ammo index sets to false
+                GunUIHandler.swapp(inventory.gunIndex, false);//current ammo index sets to false
                 inventory.GrabAmmo(false);
+
                 inventory.gunIndex++;
-                if(inventory.gunIndex>=Inventory.guns.Length){
-                    inventory.gunIndex=0;
-                }
+                
                 inventory.GrabAmmo(true);
-                GunUIHandler.instance.SwappAmmo(inventory.gunIndex, true);//after change ammo index
+                GunUIHandler.swapp(inventory.gunIndex, true);//after change ammo index
             }
         }
         public void OnFire(InputAction.CallbackContext context)
@@ -137,7 +138,14 @@ public sealed class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        public void PauseGameHandle(bool pause)
+        {
+            animator.enabled=pause;
+            movement=pause;
+        }
         #endregion
+
     }
 }
  

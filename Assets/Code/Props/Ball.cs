@@ -2,89 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-public class Ball : MonoBehaviour
-{
-    #region Properties
-    [Header("Settings")]
-    [SerializeField] int damage;
-    [SerializeField] float speed;
-    [Tooltip("Parent points, child points will increment after parent ball get destroyed")]
-    [SerializeField] int points;
-    [Header("Child settings")]
-    [SerializeField] int totalChilds;
-    [SerializeField] AssetReference childBall;
-    private List<GameObject> ball;
-    private Vector3 direction;
-    private Rigidbody2D rigid;
-    private Vector2 lastVelocity;
-    int oi;
-    public int Points { get => points; set => points = value; }
-    public byte parentLevel { get; set; } = 0;
-    #endregion
-    #region Unity Methods
-    private void Awake()
+namespace Game.Props{
+public class Ball : ScreenObjectMovement
     {
-        rigid = GetComponent<Rigidbody2D>();
-    }
-    private void Start()
-    {
-        ball = new List<GameObject>();
-        BallSpawner.totalBallsRemaining++;
-        direction = Random.insideUnitCircle.normalized;
-        childBall.LoadAssetAsync<GameObject>().Completed += OnComplete;
-    }
-    void FixedUpdate()
-    {
-        lastVelocity = rigid.velocity;
-        rigid.velocity = direction.normalized * speed;
-    }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
+        #region Properties
+        [Header("Settings")]
+        [SerializeField] int damage;
+         
+        [Tooltip("Parent points, child points will increment after parent ball get destroyed")]
+        [SerializeField] int points;
+        [Header("Child settings")]
+        [SerializeField] int totalChilds;
+        [SerializeField] protected AssetReference childBall;
+        protected List<GameObject> ball;
+        int oi;
+        public static float globalSpeedMultiplier = 1;
+        public int Points { get => points; set => points = value; }
+        public byte parentLevel { get; set; } = 0;
+        #endregion
+        #region Unity Methods
+        new void Awake()
         {
-            var speed = lastVelocity.magnitude;
-            direction = Vector2.Reflect(lastVelocity.normalized, other.contacts[0].normal);
-            rigid.SetVelocity(direction * Mathf.Max(speed, 0f));
+            base.Awake();
         }
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        switch (other.tag)
+        private void Start()
         {
-            case "Player":
-                other.GetComponentInParent<Game.Player.Health>().AddDamage(damage);
-                break;
-            case "Bullet":
-                oi++;
-                if (oi == 1) Break();
-                break;
+            ball = new List<GameObject>();
+            Game.Props.Spawn.Ball.totalBallsRemaining++;
+            direction = Random.insideUnitCircle.normalized;
+            childBall.LoadAssetAsync<GameObject>().Completed += OnComplete;
         }
-    }
-    #endregion
-    private void OnComplete(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj)
-    {
-        for (int i = 0; i < totalChilds; i++)
+        new void FixedUpdate()
         {
-            ball.Add(obj.Result);
+            lastVelocity = rigid.velocity;
+            rigid.velocity = direction.normalized * speed*globalSpeedMultiplier;
         }
-    }
-    public void Break()
-    {
-        if (parentLevel == 0)
+        new void OnCollisionEnter2D(Collision2D other)
         {
-            BallSpawner.parentBalls--;
-            foreach (var item in ball)
+            base.OnCollisionEnter2D(other);
+        }
+        protected void OnTriggerEnter2D(Collider2D other)
+        {
+            switch (other.tag)
             {
-                var ball = Instantiate(item, transform.position, Quaternion.identity, null);
-                var component = ball.GetComponent<Ball>();
-                component.parentLevel++;
-                component.Points += this.points + 1;
-                ball.transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2);
+                case "Player":
+                    other.GetComponentInParent<Game.Player.Health>().AddDamage(damage);
+                    break;
+                case "Bullet":
+                    oi++;
+                    if (oi == 1) Break();
+                    break;
             }
         }
-        int score = ScoreHandler.Score += points;
-        ScoreUIHandler.score.Invoke(score, ScoreHandler.tierLvl);
-        BallSpawner.totalBallsRemaining--;
-        Destroy(gameObject);
+        #endregion
+        protected void OnComplete(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj)
+        {
+            for (int i = 0; i < totalChilds; i++)
+            {
+                ball.Add(obj.Result);
+            }
+        }
+        public void Break()
+        {
+            if (parentLevel == 0)
+            {
+                Game.Props.Spawn.Ball.parentBalls--;
+                foreach (var item in ball)
+                {
+                    var ball = Instantiate(item, transform.position, Quaternion.identity, null);
+                    var component = ball.GetComponent<Ball>();
+                    component.parentLevel++;
+                    component.Points += this.points + 1;
+                    ball.transform.localScale = new Vector3(transform.localScale.x / 2, transform.localScale.y / 2);
+                }
+            }
+            int score = ScoreHandler.Score += points;
+            ScoreUIHandler.score.Invoke(score);
+            Game.Props.Spawn.Ball.totalBallsRemaining--;
+            Destroy(gameObject);
+        }
     }
 }

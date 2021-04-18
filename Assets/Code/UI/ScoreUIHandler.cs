@@ -9,7 +9,7 @@ public class ScoreUIHandler : MonoBehaviour
 {
     [SerializeField]Text scoreText;
     [SerializeField]TextMeshProUGUI text;
-    public static Action<int,int> score;
+    public static Action<int> score;
     private void OnEnable() {
         score+=UpdateScore;
     }
@@ -18,8 +18,8 @@ public class ScoreUIHandler : MonoBehaviour
         score -= UpdateScore;
         scoreText.text = "Score: ";
     }
-    private void UpdateScore(int amount,int level){
+    private void UpdateScore(int amount){
         scoreText.text="Score: "+amount.ToString();
-        text.text="Level: "+level.ToString();
+        text.text="Level: "+Game.Props.Spawn.Ball.tierLvl.ToString();
     }
 }

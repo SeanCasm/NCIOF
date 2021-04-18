@@ -13,27 +13,27 @@ public sealed class ScoreHandler : MonoBehaviour
         set
         {
             score = value;
-            var dT = Game.Player.Health.noDamagedTime;
             if (score <= 100)
             {
-                BallSpawner.tierLvl = 1;
+                Game.Props.Spawn.Ball.tierLvl = 1;
             }
-            else if ((score > 100 && score <= 200) || dT >= 40f)
+            else if (score > 100 && score <= 200)
             {
-                BallSpawner.tierLvl = 2;
+                Game.Props.Spawn.Ball.tierLvl = 2;
             }
-            else if ((score > 200 && score <= 400) || dT >= 60f)
+            else if (score > 200 && score <= 400)
             {
-                BallSpawner.tierLvl = 3;
+                Game.Props.Spawn.Ball.tierLvl = 3;
             }
-            else if ((score > 400 && score <= 750) || dT >= 80f)
+            else if (score > 400 && score <= 750)
             {
-                BallSpawner.tierLvl = 4;
+                Game.Props.Spawn.Ball.tierLvl = 4;
             }
-            else if ((score > 750 && score < 1000) && dT >= 120f)
+            else if (score > 750 && score < 1000)
             {
-                BallSpawner.tierLvl = 5;
+                Game.Props.Spawn.Ball.tierLvl = 5;
             }
+            ScoreUIHandler.score.Invoke(score);
         }
-    }
+    } 
 }

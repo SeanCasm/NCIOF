@@ -6,11 +6,11 @@ using UnityEngine.AddressableAssets;
 public class Gun : MonoBehaviour
 {
     #region EventHandler
-    public static event EventHandler<GunAmmoEvent> OnAmmoZero;
+    public static event EventHandler<GunCurrentInfo> OnShoot;
 
-    public class GunAmmoEvent : EventArgs
+    public class GunCurrentInfo : EventArgs
     {
-        public int gunIndex;
+        public int gunIndex,currentAmmo;
         public float reloadTime,currentLoadTime,ammoBulletSize;
         public float ammoBulletMaxSize;
     }
@@ -50,6 +50,7 @@ public class Gun : MonoBehaviour
     #endregion
     private void Awake() {
         loadProgress = reloadTime;
+        currentAmmo = gunProperties.totalAmmo;
     }
     private void OnEnable() {
         if(currentAmmo<=0){
@@ -57,7 +58,6 @@ public class Gun : MonoBehaviour
         }
     }
     protected void Start() {
-        currentAmmo=gunProperties.totalAmmo;
         shootPoint=gameObject.GetChild(0).transform;
         bullets = new List<GameObject>();
         bulletReference.LoadAssetAsync<GameObject>().Completed += OnLoadDone;
@@ -121,13 +121,14 @@ public class Gun : MonoBehaviour
         }
     }
     private void EventHandlerFunction(){
-        OnAmmoZero?.Invoke(this, new GunAmmoEvent
+        OnShoot?.Invoke(this, new GunCurrentInfo
         {
             gunIndex = iD,
-            ammoBulletSize = gunProperties.bulletWidth * currentAmmo,
+            ammoBulletSize = gunProperties.bulletWidth*currentAmmo,
             reloadTime = reloadTime,
             currentLoadTime=loadProgress,
-            ammoBulletMaxSize=gunProperties.bulletWidth*gunProperties.totalAmmo
+            ammoBulletMaxSize=gunProperties.bulletWidth*gunProperties.totalAmmo,
+            currentAmmo=currentAmmo,
         });
     }  
     protected virtual void SetDirection(Bullet gunBullet){

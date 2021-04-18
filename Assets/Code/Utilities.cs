@@ -44,10 +44,6 @@ public static class Utilities
         newColor.r = newColor.g = newColor.b = 1;
         return color = newColor;
     }
-    public static Color SetColorRGB(this Color color, float value)
-    {
-        return new Color(value, value, value);
-    }
     #endregion 
     #region GameObject
     /// <summary>

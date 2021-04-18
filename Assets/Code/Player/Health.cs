@@ -6,11 +6,15 @@ namespace Game.Player{
     {
         [SerializeField]SpriteRenderer[] bodyRenderers;
         private int currentHealth;
-        public static float noDamagedTime;
+        private bool invulnerable;
+        public float invTime{get;set;}=2;
+        public bool Invulnerable{get=>invulnerable;set{
+            invulnerable=value;
+            if(invulnerable)Invoke("DisableInv",invTime);
+        }}
         public static bool isAlive=true;
         private void Awake() {
             currentHealth=health;
-            StartCoroutine(DamageUpdater());
         }
         #region Health methods
         public IEnumerator VisualFeedBack(Color color)
@@ -24,7 +28,10 @@ namespace Game.Player{
                 e.color = Color.white;
             }
         }
-         
+        private void DisableInv(){
+            invulnerable=false;
+            invTime=2;//back to default
+        }
         public void OnDeath(){
             PlayerController pController=GetComponent<PlayerController>();
             isAlive=pController.Movement =false;
@@ -34,11 +41,13 @@ namespace Game.Player{
 
         public override void AddDamage(int amount)
         {
-            currentHealth -=amount;
-            StartCoroutine(VisualFeedBack(Color.red));
-            noDamagedTime=0;
-            HealthUIHandler.health.Invoke(currentHealth);
-            if(currentHealth <=0)OnDeath();
+            if(!invulnerable){
+                currentHealth -= amount;
+                StartCoroutine(VisualFeedBack(Color.red));
+                HealthUIHandler.health.Invoke(currentHealth);
+                Invulnerable =true;
+                if (currentHealth <= 0) OnDeath();
+            }
         }
         public void AddHealth(int amount){
             if(currentHealth<health){
@@ -46,13 +55,6 @@ namespace Game.Player{
                 StartCoroutine(VisualFeedBack(Color.green));
                 currentHealth+=amount-dif;
                 HealthUIHandler.health.Invoke(currentHealth);
-            }
-        }
-         
-        IEnumerator DamageUpdater(){
-            while(true){
-                noDamagedTime+=.5f;
-                yield return new WaitForSeconds(.5f);
             }
         }
         #endregion

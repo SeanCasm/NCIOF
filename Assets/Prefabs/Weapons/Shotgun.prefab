@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938e2c80ff2ad8d42ad90f25ca74aa4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 3.5
+  reloadTime: 3
   iD: 1
   grabType: 1
   bulletReference:

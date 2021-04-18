@@ -18,7 +18,11 @@ namespace Game.Player
         [SerializeField] LimbSolver2D limbSolver2D;
         private PlayerController playerController;
         public static GameObject[] guns;
-        public int gunIndex{get;set;}=0;
+        private int index;
+        public int gunIndex{get=>index;set{
+            index=value;
+            if (index > 1)index = 0;
+        }}
         private void Awake()
         {
             playerController = GetComponent<PlayerController>();
@@ -37,7 +41,7 @@ namespace Game.Player
             
             gunTransform.rotation = gunPoint.transform.parent.rotation;
             Gun gun = guns[index].GetComponent<Gun>();
-            GunUIHandler.instance.SetGunUI(gun);
+            GunUIHandler.gunInterface.Invoke(gun);
             if (index != 0) obj.SetActive(false);
             else playerController.gun = gun;
         }

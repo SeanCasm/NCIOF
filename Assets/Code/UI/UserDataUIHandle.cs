@@ -10,7 +10,7 @@ public class UserDataUIHandle : MonoBehaviour
     [SerializeField]Image playerIcon;
     [SerializeField]TMPro.TextMeshProUGUI userName;
     [SerializeField]Text accountCreated;
-    public Action<SetUserDataUI> dataUI;
+    public static Action<string> dataUI;
     private void Start() {
         if(instance==null){
             instance = this;
@@ -22,15 +22,7 @@ public class UserDataUIHandle : MonoBehaviour
     private void OnDisable() {
         dataUI-=SetDataUI;
     }
-    private void SetDataUI(SetUserDataUI userData){
-        userName.text=userData.userName;
-        playerIcon.sprite=userData.playerIcon;
-        accountCreated.text=userData.accountCreated;
-    }
-    
-    public class SetUserDataUI:EventArgs{
-        public Sprite playerIcon;
-        public string userName;
-        public string accountCreated;
+    private void SetDataUI(string username){
+        userName.text=username;
     }
 }

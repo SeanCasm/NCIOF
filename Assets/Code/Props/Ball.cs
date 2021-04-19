@@ -64,6 +64,7 @@ public class Ball : ScreenObjectMovement
         }
         public void Break()
         {
+            PersistentData.ballsDestroyed++;
             if (parentLevel == 0)
             {
                 Game.Props.Spawn.Ball.parentBalls--;

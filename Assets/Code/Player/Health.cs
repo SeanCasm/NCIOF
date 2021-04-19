@@ -37,6 +37,7 @@ namespace Game.Player{
             isAlive=pController.Movement =false;
             pController.IsDeath=true;
             gameObject.SetActive(false);
+            PersistentData.HighScore=ScoreHandler.Score;
         }
 
         public override void AddDamage(int amount)

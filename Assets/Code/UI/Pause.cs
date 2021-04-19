@@ -30,22 +30,20 @@ public class Pause : MonoBehaviour
             Paused.Invoke(false);
             Time.timeScale=0;
         } else {
-            Paused.Invoke(true);
-            canvas.SetActive(false);
-            Time.timeScale = 1;
+            Unpause();
         }
     }
-    public void UnpauseGameButton(){
+    private void Unpause(){
         canvas.SetActive(false);
+        Paused.Invoke(true);
         Time.timeScale = 1;
+    }
+    public void UnpauseGameButton(){
+        Unpause();
     }
     public void Leave(bool leave){
         leaveGameIns.SetActive(true);
-        if(leave){
-            SceneManager.LoadScene(0);
-        }else{
-            leaveGameIns.SetActive(false);
-        }
-         
+        if(leave)SceneManager.LoadScene(0);
+        else leaveGameIns.SetActive(false);
     }
 }

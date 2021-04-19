@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PersistentData
@@ -9,7 +10,7 @@ public class PersistentData
     public static int ballsDestroyed;
     public static int HighScore
     {
-        get => highScore; 
+        get => highScore;
         set
         {
             if (value > highScore)
@@ -18,12 +19,9 @@ public class PersistentData
             }
         }
     }
-    public static void SetUserName(string userName){
-        PersistentData.userName =userName;
-        UserDataUIHandle.instance.dataUI(new UserDataUIHandle.SetUserDataUI
-        {
-            userName=userName,
-            playerIcon=null
-        });
+    public static void SetUserName(string username)
+    {
+        userName=username;
+        UserDataUIHandle.dataUI(username);
     }
 }

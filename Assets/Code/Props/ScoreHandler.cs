@@ -35,4 +35,14 @@ public sealed class ScoreHandler : MonoBehaviour
             ScoreUIHandler.score.Invoke(score);
         }
     } 
+    private void OnEnable() {
+        DeathScreen.retry+=ResetScore;
+    }
+    private void OnDisable() {
+        DeathScreen.retry -= ResetScore;
+    }
+    private void ResetScore(){
+        Score=0;
+        tierLvl=1;
+    }
 }

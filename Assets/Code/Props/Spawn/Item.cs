@@ -5,6 +5,14 @@ namespace Game.Props.Spawn
 {
     public sealed class Item : Spawner
     {
+        private void OnEnable() {
+            DeathScreen.retry+=ResetData;
+            DeathScreen.retry +=ResetCoroutine;
+        }
+        private void OnDisable() {
+            DeathScreen.retry -= ResetData;
+            DeathScreen.retry -= ResetCoroutine;
+        }
         private new void Start()
         {
             totalPrefabsLoaded = prefabToSpawn.Length;
@@ -20,9 +28,17 @@ namespace Game.Props.Spawn
         }
         IEnumerator Generator(){
             while(Game.Player.Health.isAlive){
-                Instantiate(base.prefabsLoaded[Random.Range(0,totalPrefabsLoaded-1)],base.SpawnerPositionGenerator(),Quaternion.identity,null);
+                prefabsInstantiated.Add(Instantiate(base.prefabsLoaded[Random.Range(0,totalPrefabsLoaded-1)],base.SpawnerPositionGenerator(),Quaternion.identity,null));
                 yield return new WaitForSeconds(Random.Range(minTimeSpawn,maxTimeSpawn));
             }
+        }
+        private void ResetData()
+        {
+            base.ClearAll();
+        }
+        private void ResetCoroutine()
+        {
+            StartCoroutine(Generator());
         }
     }
 }

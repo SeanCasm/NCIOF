@@ -97,8 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381560156a8f6514daff5141de3a4cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 7507765517688471903}
-  reloadTime: 2
+  reloadTime: 1.35
   iD: 0
   grabType: 0
   bulletReference:

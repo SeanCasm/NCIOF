@@ -24,21 +24,23 @@ public class GunUIHandler : MonoBehaviour
             return false;
         }
         public void UpdateBullets(){
-            gunBullets.sizeDelta.Set(e.ammoBulletSize,gunBullets.sizeDelta.y);
+            gunBullets.sizeDelta.Set(gunBullets.sizeDelta.x,e.currentSize);
         }
     }
     public static Action<int,bool> swap;
-    public static Action<Gun>gunInterface;
+    public static Action<Gun> gunInterface;
     private void OnEnable() {
         swap+=SwappAmmo;
         Gun.OnShoot += AmmoUIUpdateHandler;
         gunInterface+=SetGunUI;
+        DeathScreen.retry+=ResetUI;
         Gun.instaLoad+=ReloadAllInstantly;
     }
     private void OnDisable() {
         swap -= SwappAmmo;
         Gun.OnShoot -= AmmoUIUpdateHandler;
         gunInterface-=SetGunUI;
+        DeathScreen.retry -= ResetUI;
         Gun.instaLoad -= ReloadAllInstantly;
     }
     private void ReloadAllInstantly(){
@@ -51,7 +53,7 @@ public class GunUIHandler : MonoBehaviour
     }
     private void AmmoUIUpdateHandler(object sender,Gun.GunCurrentInfo e){
         var sizeDelta=gunUI[e.gunIndex].gunBullets.sizeDelta;
-        sizeDelta =new Vector2(sizeDelta.x,e.ammoBulletSize);
+        sizeDelta =new Vector2(sizeDelta.x,e.currentSize);
         gunUI[e.gunIndex].gunBullets.sizeDelta=sizeDelta;
         if(e.currentAmmo ==0)StartCoroutine(Reload(e));
     }
@@ -72,6 +74,7 @@ public class GunUIHandler : MonoBehaviour
             gun.e = e;
             yield return new WaitForSeconds(0.1f);
         }
+        gun.e.currentAmmo=gun.e.maxAmmo;
         gun.loadBar.sizeDelta=new Vector2(0,gun.loadBar.sizeDelta.y);//Sets the width back to zero. 
         gun.gunBullets.sizeDelta=new Vector2(gun.gunBullets.sizeDelta.x,gun.e.ammoBulletMaxSize);
     }
@@ -91,8 +94,12 @@ public class GunUIHandler : MonoBehaviour
         StopAllCoroutines();
         gunUI[current].gunInterface.SetActive(active);
         if(active && gunUI[current].e!=null ){
-            if(gunUI[current].CheckReload())StartCoroutine(Reload(gunUI[current].e));
+            if(gunUI[current].CheckReload()){StartCoroutine(Reload(gunUI[current].e));print("XD");}
             gunUI[current].UpdateBullets();
         } 
+    }
+    private void ResetUI(){
+        SwappAmmo(1,false);
+        SwappAmmo(0,true);
     }
 }

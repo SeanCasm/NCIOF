@@ -7,4 +7,9 @@ public class DeathScreenUIHandler : MonoBehaviour
     public void Retry(){
         DeathScreen.retry.Invoke();
     }
+    public void Leave()
+    {
+        Pause.leave.Invoke();
+        DeathScreen.destroyScreen.Invoke();
+    }
 }

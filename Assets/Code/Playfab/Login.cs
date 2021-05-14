@@ -12,6 +12,8 @@ public static class Login
     private static string userName,password;
     #region Playfab login
     public static void LogIn(string username,string pass){
+        userName=username;
+        password=pass;
         PlayFabClientAPI.LoginWithPlayFab(new LoginWithPlayFabRequest{
             Username=username,
             Password=pass

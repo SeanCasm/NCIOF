@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.U2D.IK;
 namespace Game.Player
 {
-public sealed class PlayerController : MonoBehaviour,IPausable
+public sealed class PlayerController : MonoBehaviour
     {
         #region Properties
         [Header("Movement settings")]
@@ -37,14 +37,15 @@ public sealed class PlayerController : MonoBehaviour,IPausable
         private Vector2 mouseSightPosition;
         public Transform secondHandGrab { get; set; }
         public Transform twoHandsGun { get; set; }
-        private bool idle, movement = true, onGround, death;
-        public bool IsDeath { set => death = value; }
+        public static Transform playerTransform;
+        private bool idle, movement = true;
         public bool Movement { set => movement = value; }
         private float xInput;
         #endregion
         #region Unity Methods
         void Awake()
         {
+            playerTransform=transform;
             idle = true;
             mouseSight.SetParent(null);
             mainCam = Camera.main;
@@ -53,7 +54,11 @@ public sealed class PlayerController : MonoBehaviour,IPausable
             rigid = GetComponent<Rigidbody2D>();
         }
         private void OnEnable() {
-            Pause.Paused+=PauseGameHandle;
+            Pause.pause +=PauseGameHandle;
+            ResetState();
+        }
+        private void OnDisable() {
+            Pause.pause -= PauseGameHandle;
         }
         private void FixedUpdate()
         {
@@ -62,7 +67,7 @@ public sealed class PlayerController : MonoBehaviour,IPausable
                 float xVelo = speed * xInput * Time.deltaTime;
                 rigid.SetVelocity(xVelo, 0);
             }
-            else if (death)
+            else if (!Health.isAlive)
             {
                 rigid.SetVelocity(0, 0);
             }
@@ -138,14 +143,20 @@ public sealed class PlayerController : MonoBehaviour,IPausable
                 }
             }
         }
-
-        public void PauseGameHandle(bool pause)
+        private void ResetState(){
+            movement=true;
+        }
+        private void PauseGameHandle()
         {
-            animator.enabled=pause;
-            movement=pause;
+            if(Time.deltaTime==1){
+                animator.enabled = false;
+                movement = false;
+            }else{
+                animator.enabled = true;
+                movement = true;
+            }
         }
         #endregion
-
     }
 }
  

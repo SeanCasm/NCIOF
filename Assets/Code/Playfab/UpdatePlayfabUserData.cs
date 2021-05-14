@@ -32,27 +32,29 @@ public class Stats
 
     public int ballsDestroyed;
     public int highestLevelReached;
-    public Stats (int totalPoints,int highscore,int ballsDestroyed,int highestLevelReached){
-        this.totalPoints+=totalPoints;
-        if (highscore > this.highscore) this.highscore = highscore;
-        this.ballsDestroyed=ballsDestroyed;
-        if(highestLevelReached>this.highestLevelReached)this.highestLevelReached=highestLevelReached;
+    public Stats (int points,int ballsDestroyed,int highestLevelReached){
+        PersistentData.totalPoints +=points;
+        this.totalPoints=PersistentData.totalPoints;
+
+        if (points > PersistentData.highscore){ 
+            PersistentData.highscore=this.highscore = points;
+        }
+        PersistentData.ballsDestroyed=this.ballsDestroyed=ballsDestroyed;
+        if(highestLevelReached>PersistentData.highestLevelReached){
+            PersistentData.highestLevelReached=this.highestLevelReached=highestLevelReached;
+        }
     }
     public Stats(){}
 }
 public static class UpdatePlayfabUserData
 {
     public static void UpdateAll(){
+        Stats stats=new Stats(ScoreHandler.Score,Game.Props.Spawn.Ball.ballsDestroyedInGame,ScoreHandler.tierLvl);
         PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest
         {
             Permission = UserDataPermission.Public,
             Data = new Dictionary<string, string>{
-                {"stats",JsonUtility.ToJson(new Stats(
-                    ScoreHandler.Score,
-                    ScoreHandler.Score,
-                    Game.Props.Spawn.Ball.ballsDestroyedInGame,
-                    ScoreHandler.tierLvl
-                ))}
+                {"stats",JsonUtility.ToJson(stats)}
             }
         }, resultCallback =>
         {

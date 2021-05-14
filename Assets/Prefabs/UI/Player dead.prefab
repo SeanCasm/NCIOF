@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 7014872684921892026}
   - component: {fileID: 7014872684921892005}
   - component: {fileID: 7014872684921892004}
-  - component: {fileID: 7014872684921892007}
+  - component: {fileID: 999527695883950969}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -596,9 +596,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7014872684921892007}
+      - m_Target: {fileID: 999527695883950969}
         m_TargetAssemblyTypeName: GameSettings, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: Leave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -608,7 +608,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7014872684921892007
+--- !u!114 &999527695883950969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

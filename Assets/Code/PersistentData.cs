@@ -6,7 +6,7 @@ using PlayFab.ClientModels;
 using PlayFab;
 public sealed class PersistentData:MonoBehaviour
 {
-    private static string userName;
+    public static string userName;
     public static int highscore,totalPoints,ballsDestroyed,highestLevelReached;
     private static string password;
      
@@ -19,6 +19,10 @@ public sealed class PersistentData:MonoBehaviour
     private void UpdateAllPlayFabUserData(){
         UpdatePlayfabUserData.UpdateAll();
     }
+    /// <summary>
+    /// Saves the user playfab data to local data. 
+    /// </summary>
+    /// <param name="playfabUserPersistentData"></param>
     public static void SetPersistentData(PlayFabUserPersistentData playfabUserPersistentData){
         userName=playfabUserPersistentData.username;
         password=playfabUserPersistentData.password;
@@ -26,6 +30,5 @@ public sealed class PersistentData:MonoBehaviour
         totalPoints=playfabUserPersistentData.totalPoints;
         ballsDestroyed=playfabUserPersistentData.ballsDestroyed;
         highestLevelReached=playfabUserPersistentData.highestLevelReached;
-        UserDataUIHandle.dataUpdate(playfabUserPersistentData);
     } 
 }

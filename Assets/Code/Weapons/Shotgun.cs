@@ -9,6 +9,16 @@ public class Shotgun : Gun
     [SerializeField]int angle;
     [SerializeField]int maxAngle,minAngle;
     private int pelletsShooted = 0;
+    new void Awake() {
+       base.Awake(); 
+    }
+    new void OnEnable() {
+        if(!base.isSubscribed)DeathScreen.retry+=ResetAll;
+        base.OnEnable();
+    }
+    new void OnDestroy() {
+        DeathScreen.retry-=ResetAll;
+    }
     new void Start()
     {
         base.Start();
@@ -31,5 +41,8 @@ public class Shotgun : Gun
             pelletsShooted++;
         }
         if (pelletsShooted == gunProperties.totalAmmo * totalPellets) pelletsShooted = 0;//resets the pellets count
+    }
+    private void ResetAll(){
+        pelletsShooted=0;
     }
 }

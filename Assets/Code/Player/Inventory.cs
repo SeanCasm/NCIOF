@@ -8,7 +8,6 @@ namespace Game.Player
 {
     public class Inventory : MonoBehaviour
     {
-        public static Inventory instance;
         [SerializeField] Transform frontArm;
         [SerializeField] Transform gunPoint;
         [SerializeField] Animator backArmAnimator;
@@ -26,7 +25,6 @@ namespace Game.Player
         private void Awake()
         {
             playerController = GetComponent<PlayerController>();
-            instance = this;
             guns=new GameObject[2];
             for(int i=0;i<guns.Length;i++){
                 guns[i]=Instantiate(gunClassHandler.GetClass(ClassHandler.classIndex)[i], gunPoint, frontArm);
@@ -42,7 +40,7 @@ namespace Game.Player
             gunTransform.rotation = gunPoint.transform.parent.rotation;
             Gun gun = guns[index].GetComponent<Gun>();
             GunUIHandler.gunInterface.Invoke(gun);
-            if (index != 0) obj.SetActive(false);
+            if (index != 0) obj.gameObject.SetActive(false);
             else playerController.gun = gun;
         }
         public void GrabAmmo(bool active)
@@ -59,6 +57,13 @@ namespace Game.Player
                 backArmTarget.localPosition = Vector2.zero;
                 backArmAnimator.enabled = !active;
             }
+        }
+        private void ResetAll(){
+            index=0;
+            GunUIHandler.swap(0, true);
+            GunUIHandler.swap(1, false);
+
+            GrabAmmo(true);
         }
     }
 }

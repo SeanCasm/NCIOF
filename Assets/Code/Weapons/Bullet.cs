@@ -9,18 +9,20 @@ public class Bullet : MonoBehaviour,IBullet
     [SerializeField]float speed;
     [SerializeField]float lifeTime;
     private Rigidbody2D rigid;
-    public float damage { get; set; }
     public Gun gun{get;set;}
     public Vector3 direction{get;set;}
-    private void OnEnable() {
+    protected void OnEnable() {
         if (lifeTime != 0)
         {
             Invoke("BackToGun", lifeTime);
         }
+        DeathScreen.retry+=BackToGun;
+    }
+    protected void OnDisable() {
+        DeathScreen.retry -= BackToGun;
     }
     protected void Awake() {
         rigid=GetComponent<Rigidbody2D>();
-        GameSceneObjects.allObjects.Add(gameObject);
     }
     protected void FixedUpdate() {
         rigid.velocity=direction.normalized*speed*Time.deltaTime;
@@ -30,13 +32,13 @@ public class Bullet : MonoBehaviour,IBullet
             BackToGun();
         }
     }
-    private void OnBecameInvisible() {
+    protected void OnBecameInvisible() {
         BackToGun();
     }
     /// <summary>
     /// Repositions the bullet back to the weapon that instance it.
     /// </summary>
-    private void BackToGun(){
+    protected void BackToGun(){
         gameObject.transform.SetParent(gun.shootPoint);
         gameObject.transform.position=gun.shootPoint.position;
         direction = rigid.velocity=Vector2.zero;

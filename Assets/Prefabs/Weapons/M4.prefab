@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92d34c9a3bc9af438b12b4175d1fea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 4
+  reloadTime: 3.3
   iD: 1
   grabType: 1
   bulletReference:
@@ -112,7 +112,7 @@ MonoBehaviour:
     bulletWidth: 10
     bulletHeight: 27
   bulletBurst: 3
-  delayPerBurst: 0.25
+  delayPerBurst: 0.75
 --- !u!1 &2374921850879733250
 GameObject:
   m_ObjectHideFlags: 0

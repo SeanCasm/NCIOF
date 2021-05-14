@@ -10,8 +10,8 @@ public class Gun : MonoBehaviour
 
     public class GunCurrentInfo : EventArgs
     {
-        public int gunIndex,currentAmmo;
-        public float reloadTime,currentLoadTime,ammoBulletSize;
+        public int gunIndex,currentAmmo,maxAmmo;
+        public float reloadTime,currentLoadTime,currentSize;
         public float ammoBulletMaxSize;
     }
     #endregion
@@ -40,6 +40,7 @@ public class Gun : MonoBehaviour
     public int CurrentAmmo{get=>currentAmmo;}
     public float loadProgress{get;set;}
     public static Action instaLoad;
+    protected bool isSubscribed;
     public HandsForGrab GunGrabType{get=>grabType;}
     public enum HandsForGrab
     {
@@ -49,17 +50,23 @@ public class Gun : MonoBehaviour
     protected List<GameObject> bullets;
     public Transform shootPoint{get;set;}
     #endregion
-    private void Awake() {
+    protected void Awake() {
         loadProgress = reloadTime;
         currentAmmo = gunProperties.totalAmmo;
     }
-    private void OnEnable() {
+    protected void OnEnable() {
         if(currentAmmo<=0){
             StartCoroutine(Reload());
         }
-        instaLoad+=ReloadAllInstantly;
+        if(!isSubscribed){
+            DeathScreen.retry += ReloadAllInstantly;
+            instaLoad += ReloadAllInstantly;
+        }
+        isSubscribed=true;
     }
-    private void OnDisable() {
+
+    protected void OnDestroy() {
+        DeathScreen.retry -= ReloadAllInstantly;
         instaLoad -= ReloadAllInstantly;
     }
     protected void Start() {
@@ -134,11 +141,12 @@ public class Gun : MonoBehaviour
         OnShoot?.Invoke(this, new GunCurrentInfo
         {
             gunIndex = iD,
-            ammoBulletSize = gunProperties.bulletWidth*currentAmmo,
+            currentSize = gunProperties.bulletWidth*currentAmmo,
             reloadTime = reloadTime,
             currentLoadTime=loadProgress,
             ammoBulletMaxSize=gunProperties.bulletWidth*gunProperties.totalAmmo,
             currentAmmo=currentAmmo,
+            maxAmmo=gunProperties.totalAmmo
         });
     }  
     protected virtual void SetDirection(Bullet gunBullet){

@@ -15,11 +15,8 @@ namespace Game.Player{
         }}
         public static bool isAlive=true;
         private void OnEnable() {
-            DeathScreen.retry+=ResetHealth;
-        }
-        private void OnDisable() {
-            DeathScreen.retry-=ResetHealth;
-        }
+            ResetAll();
+        } 
         private void Awake() {
             currentHealth=health;
         }
@@ -39,7 +36,6 @@ namespace Game.Player{
         public void OnDeath(){
             PlayerController pController=GetComponent<PlayerController>();
             isAlive=pController.Movement =false;
-            pController.IsDeath=true;
             gameObject.SetActive(false);
             onDeath.Invoke();
             DeathScreen.deathPause.Invoke();         
@@ -71,8 +67,9 @@ namespace Game.Player{
         }
         #endregion
         #region Resets
-        private void ResetHealth(){
+        public void ResetAll(){
             currentHealth=health;
+            isAlive = true;
             invulnerable=false;
             HealthUIHandler.health(currentHealth);
             ForeachSprites();

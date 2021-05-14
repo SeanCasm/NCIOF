@@ -53,24 +53,6 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: a2324f8346cb5ca4f917bd86ea6faada
-    m_Address: Assets/Prefabs/Props/Tree.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: ca383e7d0b0f46f4bb1a8cc78450f985
-    m_Address: Assets/Prefabs/Props/Tree 2.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 4fa4a557480d3ae459dbe989b7f8367b
-    m_Address: Assets/Prefabs/Props/Tree 3.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
   - m_GUID: 09a121af51a385340b820af90fc43754
     m_Address: Balls/Ball.prefab
     m_ReadOnly: 0
@@ -145,6 +127,30 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 5623d67676a5eb145ae63cc23fc3ae15
     m_Address: Items/ReloadAll.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 08406775295b95e4788df6f4d390377e
+    m_Address: Weapons/Bazooka impact.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 04de31c947f1c0645aa271ac03e084fd
+    m_Address: Weapons/Bazooka projectil.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: de1d906fd8b24754d89732a333b0d446
+    m_Address: Weapons/Explosion.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7f4f20fdec24cd14baabe1b920771aa4
+    m_Address: Weapons/Revolver bullet.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

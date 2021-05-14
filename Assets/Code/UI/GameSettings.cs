@@ -20,6 +20,9 @@ public class GameSettings : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Leave(){
+        Pause.leave.Invoke();
+    }
     public void LoadScene(int index){
         StartCoroutine(CheckSceneLoaded(index));
     }

@@ -8,14 +8,14 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-    [SerializeField]GameObject canvas;
+    [SerializeField]GameObject pauseScreen,playerHUD,mainMenu;
     private GameObject leaveGame;
-    private GameObject leaveGameIns;
     public static Action pause;
-    public static event Action<bool> Paused;
+    public static Action leave;
     private void OnEnable() {
         pause+=PauseGame;
         DeathScreen.deathPause+=PauseAtDeath;
+        leave+=Leave;
         DeathScreen.retry+=UnPauseAtDeath;
     }
     protected void OnLoadDone(UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle<GameObject> obj)
@@ -26,14 +26,14 @@ public class Pause : MonoBehaviour
         pause-=PauseGame;
         DeathScreen.deathPause-=PauseAtDeath;
         DeathScreen.retry -= UnPauseAtDeath;
+        leave-=Leave;
     }
     private void PauseAtDeath(){
         Time.timeScale = 0;
     }
     private void PauseGame(){
         if(Time.timeScale==1){
-            canvas.SetActive(true);
-            Paused.Invoke(false);
+            pauseScreen.SetActive(true);
             Time.timeScale=0;
         } else {
             Unpause();
@@ -43,16 +43,22 @@ public class Pause : MonoBehaviour
         Time.timeScale=1;
     }
     private void Unpause(){
-        canvas.SetActive(false);
-        Paused.Invoke(true);
+        pauseScreen.SetActive(false);
         Time.timeScale = 1;
     }
     public void UnpauseGameButton(){
         Unpause();
     }
-    public void Leave(bool leave){
-        leaveGameIns.SetActive(true);
-        if(leave)SceneManager.LoadScene(0);
-        else leaveGameIns.SetActive(false);
+    public void LeaveToMainMenu(){
+        leave.Invoke();
+    }
+    private void Leave(){
+        Unpause();
+        playerHUD.SetActive(false);
+        SceneManager.LoadScene(0);
+        mainMenu.SetActive(true);
+    }
+    public void Back(){
+
     }
 }
